@@ -73,8 +73,20 @@ public class Main
 					System.out.println(self);
 					break;
 				case 3:
-					/***** TODO: (Part 1) implement a comparison case using the comparable method on the Person class to compare self to p1-p4*****/
-					
+					System.out.println("\nComparison Results:");
+					for (Person other : people) {
+						if (other == self)
+							continue;
+						int comparison = self.compareTo(other);
+					}
+					if (comparison > 0) {
+						System.out.println("More privilege than " + other.getName());
+					} else if (comparison < 0) {
+						System.out.println("Less Privilege than " + other.getName());
+					} else {
+						System.out.println("Same privilege as " + other.getName());
+					}
+ 					
 					System.out.println("\nReturning to main menu.\n");
 					break;
 				case 4:
