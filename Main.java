@@ -8,6 +8,7 @@ public class Main
 		"I have never wondered where my next meal will come from.",
 		"I have no disabilities.",
 		"My work and school holidays coincide with the religious holidays I celebrate.",
+		"I have both my parents in my life",
 		"I studied the culture and history of my ancestors in elementary school.",
 		"I have never been bullied or been made fun of based on something I could not change (ie. race, ethnicity, sexual orientation, disabilities.)",
 		"I have never been stopped by law enforcement due to mere suspicion as opposed to legitimate wrongdoing.",
@@ -21,6 +22,7 @@ public class Main
 		"I have never been told my natural hair looks dirty or unprofessional.",
 		"I have gone to private school.",
 		"I can easily find souvenirs with my name on them."
+		
 	};
 	public static final int PTS_PER_ANSWER = 10, TOTAL_PTS_POSSIBLE = PTS_PER_ANSWER * STATEMENTS.length,
 		MAX = Person.DEFAULT_PRIVILEGE + TOTAL_PTS_POSSIBLE,
@@ -34,10 +36,10 @@ public class Main
 	public static void main(String[] args)
 	{
 		// DECLARATION + INITIALIZATION
-		Person p1 = new Person("Amira", "I am a Syrian refugee.", 40);
-		Person p2 = new Person("D'Andra", "I am an African-American trans woman.", -20);
-		Person p3 = new Person("Jennifer", "I am a New Yorker", 140);
-		Person p4 = new Person("Pete", "I am a guy from Pennsylvania", 200);
+		Person p1 = new Person("Amira", "She/Her", "I am a Syrian refugee.", 40);
+		Person p2 = new Person("D'Andra", "She/Her", "I am an African-American trans woman.", -20);
+		Person p3 = new Person("Jennifer", "She/Her", "I am a New Yorker", 140);
+		Person p4 = new Person("Pete", "He/Him", "I am a guy from Pennsylvania", 200);
 		Person self = new Person();
 		Person[] people = {p1, p2, p3, p4, self};
 		boolean done = false;
@@ -78,7 +80,7 @@ public class Main
 						if (other == self)
 							continue;
 						int comparison = self.compareTo(other);
-					}
+					
 					if (comparison > 0) {
 						System.out.println("More privilege than " + other.getName());
 					} else if (comparison < 0) {
@@ -86,12 +88,12 @@ public class Main
 					} else {
 						System.out.println("Same privilege as " + other.getName());
 					}
- 					
+				}
 					System.out.println("\nReturning to main menu.\n");
-					break;
+					
 				case 4:
 					System.out.println("Exiting Program...\n");
-					keyboard.close(); //housekeeping
+					keyboard.close(); 
 					done = true;
 					break;
 				default:
@@ -125,21 +127,19 @@ public class Main
 	public static int doPrivilegeQuestionnaire() {
 		boolean isValid;
 		int choice, privilegeEstimate = Person.DEFAULT_PRIVILEGE;
-	
+
 		System.out.println("Please indicate whether the following statements are true or false.\n"
 				+ "Input 1 or 2 accordingly.");
-		
-		for(int i = 0; i < STATEMENTS.length; i++) 
-		{
+
+		for (int i = 0; i < STATEMENTS.length; i++) {
 			isValid = false;
-			do{
+			do {
 				System.out.println(STATEMENTS[i]);
 				System.out.print("1. True. \n2. False.\nEnter the appropriate answer: ");
 				choice = keyboard.nextInt();
 				System.out.println();
 
-				switch (choice)
-				{
+				switch (choice) {
 					case 1:
 						privilegeEstimate += 10;
 						isValid = true;
@@ -150,11 +150,13 @@ public class Main
 						break;
 					default:
 						System.out.println("Invalid choice, please make sure to enter 1 or 2.");
-						break;			
+						break;
 				}
-			}while(!isValid);
+			} while (!isValid);
 		}
-		
+
 		return privilegeEstimate;
 	}
+
+	
 }
